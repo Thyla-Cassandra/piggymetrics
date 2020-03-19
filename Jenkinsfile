@@ -2,7 +2,9 @@ pipeline {
     
     stages {
         stage ("SCM checkout") {
-            checkout scm
+            steps {
+                checkout scm
+            }
         }
     }
 
