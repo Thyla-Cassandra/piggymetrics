@@ -19,6 +19,21 @@ pipeline {
                   
         }
 
+        stage ("Junit") {
+            steps {
+                script {
+                    def files = findFiles(glob: '**/TEST-*.xml')
+                    
+                    files.each { file ->
+                         echo file.name + ":" + file.path    
+                        
+                    }
+
+                }
+
+            }
+                  
+        }
         
     }
 
