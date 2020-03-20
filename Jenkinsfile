@@ -1,3 +1,6 @@
+import groovy.util.slurpersupport.GPathResult;
+import groovy.xml.StreamingMarkupBuilder;
+
 pipeline {
     agent any
     
@@ -22,11 +25,12 @@ pipeline {
         stage ("Junit") {
             steps {
                 script {
-                    def files = findFiles(glob: '**/TEST-*.xml')
+                    def testResults = findFiles(glob: '**/TEST-*.xml')
+                    def xs = new XmlSlurper()
                     
-                    files.each { file ->
-                         echo file.name + ":" + file.path    
-                        
+                    testResults.each { testResult ->
+                         testsuite = xs.parse(testResult.path)    
+                         echo "${testsuite.@id}"
                     }
 
                 }
