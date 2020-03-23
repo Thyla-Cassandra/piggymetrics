@@ -1,5 +1,4 @@
-import groovy.util.slurpersupport.GPathResult;
-import groovy.xml.StreamingMarkupBuilder;
+@Library('jenkins-shared-library')
 
 pipeline {
     agent any
