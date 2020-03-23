@@ -25,14 +25,8 @@ pipeline {
         stage ("Junit") {
             steps {
                 script {
-                    def testResults = findFiles(glob: '**/TEST-*.xml')
-                    def xs = new XmlSlurper()
+                    mergeJunitReports([reports: '**/TEST-*.xml'])
                     
-                    testResults.each { testResult ->
-                         testsuite = xs.parse(testResult.path)    
-                         echo "${testsuite.@id}"
-                    }
-
                 }
 
             }
