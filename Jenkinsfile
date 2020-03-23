@@ -24,7 +24,7 @@ pipeline {
         stage ("Junit") {
             steps {
                 script {
-                    mergeJunitReports([reports: '**/TEST-*.xml'])
+                    echo mergeJunitReports([reports: '**/TEST-*.xml'])
                     
                 }
 
