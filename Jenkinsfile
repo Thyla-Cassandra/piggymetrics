@@ -17,8 +17,16 @@ pipeline {
         stage ("Echo") {
             steps {
                 script {
+                    def result = false;
                     currentBuild.rawBuild.getCauses().each { cause ->
-                         echo "" + cause
+                         if (cause instanceof hudson.model.Cause$UserIdCause) {
+                              result = true
+                         } 
+                    }
+                    if (result) {
+                         echo "Triggered by User"
+                    } else {
+                         echo "Triggered by timer"
                     }
                 }
 
