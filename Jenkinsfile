@@ -14,24 +14,34 @@ pipeline {
                 checkout scm
             }
         }
+        stage ("Echo") {
+            steps {
+                script {
+                    echo currentBuild.rawBuild.getCause()
+                }
+
+            }
+        }
         stage ("Build") {
             steps {
                 sh "mvn clean package"
             }
                   
+        } when {
+            expression {false}
         }
 
         stage ("Junit") {
             steps {
                 script {
-                    echo mergeJunitReports([reports: '**/TEST-*.xml'])
-                    
+                    echo "" + mergeJunitReports([reports: '**/TEST-*.xml'])
                 }
 
             }
+        } when {
+            expression {false}
                   
         }
-        
     }
 
 
