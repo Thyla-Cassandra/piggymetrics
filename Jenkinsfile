@@ -17,7 +17,7 @@ pipeline {
         stage ("Echo") {
             steps {
                 script {
-                    echo currentBuild.rawBuild.getCause()
+                    echo currentBuild.rawBuild.getCauses()
                 }
 
             }
