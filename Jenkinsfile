@@ -26,10 +26,10 @@ pipeline {
             steps {
                 sh "mvn clean package"
             }
-                  
-        } when {
-            expression {false}
-        }
+            when {
+                expression {false}
+            }      
+        } 
 
         stage ("Junit") {
             steps {
@@ -38,9 +38,10 @@ pipeline {
                 }
 
             }
-        } when {
-            expression {false}
+            when {
+                expression {false}
                   
+            }
         }
     }
 
