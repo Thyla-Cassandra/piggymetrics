@@ -45,6 +45,7 @@ pipeline {
             steps {
                 script {
                     junit '**/TEST-*.xml'
+                    echo "" + mergeJunitReports()
                 }
 
             }
