@@ -37,7 +37,7 @@ pipeline {
                 sh "mvn clean package"
             }
             when {
-                expression {false}
+                expression {true}
             }      
         } 
 
@@ -49,7 +49,7 @@ pipeline {
 
             }
             when {
-                expression {false}
+                expression {true}
                   
             }
         }
